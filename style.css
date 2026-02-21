@@ -1,0 +1,213 @@
+html, body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    font-family: EuroStyle, Calibri;
+    color: #333333;
+    font-size: 1.1em;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.light-on {
+    background: #222;
+    color: #eee;
+}
+
+@font-face {
+    font-family: EuroStyle;
+    src: url(font/EuroStyle.ttf);
+}
+
+h1 {
+    font-size: 1.5em;
+    line-height: 1;
+    font-weight: bold;
+}
+
+body.light-on h1 {
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.25)
+}
+
+p {
+    letter-spacing: 1px;
+}
+
+aside.top-left {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+
+aside.top-right {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+aside.top-right a {
+    color: #333;
+    transition: color 0.2s ease, opacity 0.2s ease;
+    opacity: 0.2;
+}
+aside.top-right a:hover {
+    opacity: 1;
+}
+aside.top-right a svg {
+    width: 20px;
+    height: 20px;
+    float: right;
+}
+body.light-on aside.top-right a {
+    color: #eee;
+}
+
+aside.bottom-left {
+    position: absolute;
+    bottom: 30px;
+    left: 40px;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+svg {
+    height: auto;
+    width: 40%;
+    margin: 30px;
+    animation: shadow 10s infinite;
+    z-index: 2;
+}
+
+#buttonL,
+#buttonC,
+#buttonA {
+    opacity: 0;
+}
+
+#buttonL:hover,
+#buttonC:hover,
+#buttonA:hover {
+    opacity: 0.1;
+    cursor: pointer;
+}
+
+#buttonL:active,
+#buttonC:active,
+#buttonA:active {
+    opacity: 0.2;
+}
+
+.watch {
+    height: 1000vh;
+    background-size: 1200px;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scale(1.4);
+    transition: all 0.3s ease;
+}
+.watch.white {
+    background-image: url('img/F-91WB-7A_N.png');
+}
+.watch.black {
+    background-image: url('img/F-91WB-1A_N.png');
+}
+.watch.blue {
+    background-image: url('img/F-91WB-2A1_N.png');
+}
+.watch.original {
+    background-image: url('img/F-91W-1_05.png');
+}
+
+.color-selector {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}
+.color-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid white;
+    cursor: pointer;
+    padding: 0;
+    box-shadow: 0 0 0 2px transparent;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.color-dot:hover {
+    transform: scale(1.05);
+}
+.color-dot.active {
+    box-shadow: 0 0 0 2px #333;
+}
+body.light-on .color-dot.active {
+    border-color: #eee;
+}
+.dot-white {
+    background-color: #F1F0EE;
+}
+.dot-black {
+    background-color: #1a1a1a;
+}
+.dot-blue {
+    background-color: #092E73;
+}
+.dot-original {
+    background-color: #555555;
+}
+
+.watch > svg {
+    width: 190px !important;
+    margin-top: -152px;
+}
+
+#screen,
+#button-a,
+#button-c,
+#button-l {
+    display: none;
+}
+
+#display path {
+    fill: #0C0F06;
+}
+
+@media (max-width: 768px) {
+    aside.top-left {
+        top: 10px;
+        left: 20px;
+    }
+    aside.top-right {
+        top: -5px;
+        right: 0px;
+    }
+    aside.bottom-left {
+        bottom: 20px;
+        left: 20px;
+    }
+    h1 {
+        font-size: 1.4em;
+    }
+    .watch {
+        transform: scale(1.2);
+    }
+}
