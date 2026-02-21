@@ -15,7 +15,11 @@ body {
     font-family: EuroStyle, Calibri;
     color: #333333;
     font-size: 1.1em;
-    transition: background 0.3s ease, color 0.3s ease;
+    transition: background 0.3s ease, color 0.3s ease, opacity 2.5s ease;
+    opacity: 0;
+}
+body.loaded {
+    opacity: 1;
 }
 
 body.light-on {
