@@ -10,32 +10,26 @@ class CasioF91W {
               buttonC = document.querySelector("#buttonC"),
               buttonA = document.querySelector("#buttonA");
 
-        buttonL.addEventListener("mousedown", e => {
-            this.os.buttonL(true);
-        });
+        const bindButton = (el, handler) => {
+            el.addEventListener("mousedown", () => handler(true));
+            el.addEventListener("mouseup", () => {
+                handler(false);
+                if (typeof this.onButtonClick === "function") this.onButtonClick();
+            });
+            el.addEventListener("touchstart", e => {
+                e.preventDefault();
+                handler(true);
+            });
+            el.addEventListener("touchend", e => {
+                e.preventDefault();
+                handler(false);
+                if (typeof this.onButtonClick === "function") this.onButtonClick();
+            });
+        };
 
-        buttonL.addEventListener("mouseup", e => {
-            this.os.buttonL(false);
-            if (typeof this.onButtonClick === "function") this.onButtonClick();
-        });
-        
-        buttonC.addEventListener("mousedown", e => {
-            this.os.buttonC(true);
-        });
-
-        buttonC.addEventListener("mouseup", e => {
-            this.os.buttonC(false);
-            if (typeof this.onButtonClick === "function") this.onButtonClick();
-        });
-        
-        buttonA.addEventListener("mousedown", e => {
-            this.os.buttonA(true);
-        });
-
-        buttonA.addEventListener("mouseup", e => {
-            this.os.buttonA(false);
-            if (typeof this.onButtonClick === "function") this.onButtonClick();
-        });
+        bindButton(buttonL, down => this.os.buttonL(down));
+        bindButton(buttonC, down => this.os.buttonC(down));
+        bindButton(buttonA, down => this.os.buttonA(down));
     }
 }
 
